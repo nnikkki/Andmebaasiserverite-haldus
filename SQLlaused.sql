@@ -1,5 +1,5 @@
-CREATE DATABASE inimene;
-USE inimene;
+CREATE DATABASE VeronikaLOGIT;
+USE VeronikaLOGI;
 
 CREATE TABLE opilane(
 opilaneID int Primary Key identity(1,1),
