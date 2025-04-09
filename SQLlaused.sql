@@ -24,28 +24,25 @@ elukoht varchar(50) UNIQUE,
 maakond varchar(50)
 );
 SELECT * FROM elukoht;
---andmete lisamine tabeli elukoht
 INSERT INTO elukoht(elukoht, maakond)
 VALUES ('Tallinn', 'Harjumaa'),
 ('Tartu', 'Tartumaa'),
 ('Pärnu', 'Pärnumaa');
 
---tabeli muutmine uue veergu lisamine
 ALTER TABLE opilane ADD elukohtID int;
 SELECT * FROM opilane;
---foreign key lisamine
 ALTER TABLE opilane
 ADD CONSTRAINT fk_elukoht
 FOREIGN KEY (elukohtID)
 references elukoht(elukohtID);
 
-Select * from VeronikaLOGIT;
+Select * from opilane;
 Select * from elukoht;
-INSERT INTO VeronikaLOGIT
+INSERT INTO opilane
 (nimi, synniaeg, telefon, pikkus, opilaskodu, elukohtID)
 VALUES ('Peeter Vana', '2021-12-30', '2568952', 90.5, 0,1);
 
-select * from VeronikaLOGIT join elukoht
+select * from opilane join elukoht
 ON opilane.elukohtID=elukoht.elukohtID;
   
 
@@ -65,7 +62,21 @@ INSERT INTO auto
 (autoNr, mudell, mark, vaasta)
 VALUES ('296YKM', 'Corolla', 'Toyota', 2025);
 
-ALTER TABLE opilane ADD autoID int;
+INSERT INTO auto
+(autoNr, mudell, mark, vaasta)
+VALUES ('512ABC', 'Civic', 'Honda', 2023);
+
+INSERT INTO auto
+(autoNr, mudell, mark, vaasta)
+VALUES ('834XYZ', 'Model 3', 'Tesla', 2024);
+
+INSERT INTO auto
+(autoNr, mudell, mark, vaasta)
+VALUES ('178MKL', 'Octavia', 'Škoda', 2022);
+
+INSERT INTO auto
+(autoNr, mudell, mark, vaasta)
+VALUES ('909DFG', 'Mustang', 'Ford', 2021);
 
 ALTER TABLE opilane
 ADD Constraint fk_auto
@@ -76,8 +87,11 @@ select * from opilane;
 select * from auto;
 
 INSERT INTO opilane
-(eesnimi, synniaeg, opilaskodu, elukohtID, autoID)
+(eesnimi, synniaeg, opilaskodu, pikkus, elukohtID, autoID)
 VALUES ('Veronika Hahan', '2021-12-4' , '543678', 170.2, 0, 2, 1);
 
 SELECT * from opilane join auto
 ON opilane.autoID=auto.autoID;  
+
+
+
